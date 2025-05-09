@@ -35,7 +35,7 @@ def priprav_data(df):
     if pd.isnull(start):
         start = df['cas_rel'].min()
     df['cas_norm'] = df['cas_rel'] - start
-    return df[(df['cas_norm'] >= 0) & (df['cas_norm'] <= 15)]
+    return df[(df['cas_norm'] >= 0) & (df['cas_norm'] <= 12)]
 
 def zisti_regulator(df):
     kod = df['kod'].mode()[0]
