@@ -2,7 +2,7 @@
 #include <ros.h>           // Táto knižnica zabezpečuje komunikáciu s ROS 
 #include <std_msgs/Float32.h>  // Použijeme jednoduchú ROS správu typu Float32 pre vzdialenosť
 
-// Inicializácia ROS uzla na Arduine
+// Deklarácia ROS uzla
 ros::NodeHandle nh;
 
 // Vytvorenie ROS správy a publishera

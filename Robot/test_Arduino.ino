@@ -1,37 +1,28 @@
-#define echoPin                                            \
-    2 // attach pin D2 Arduino to pin Echo of HC-SR04
-#define trigPin                                            \
-    3 // attach pin D3 Arduino to pin Trig of HC-SR04                                          \
+#define echoPin 2   // Pin pre Echo (D2)
+#define trigPin 3   // Pin pre Trig (D3)
 
 
-long duration; // Variable to store time taken to the pulse
-               // to reach receiver
-
-int distance; // Variable to store distance calculated using
-              // formula
+long duration; // Čas návratu pulzu
+int distance; // Vypočítaná vzdialenosť
 
 void setup()
 {
-    pinMode(trigPin,
-            OUTPUT); // Sets the trigPin as an OUTPUT
-    pinMode(echoPin, INPUT); // Sets the echoPin as an INPUT
+    pinMode(trigPin, OUTPUT); // Trig pin ako výstup
+    pinMode(echoPin, INPUT); // Echo pin ako vstup
 
     // Serial Communication is starting with 9600 of
     // baudrate speed
     Serial.begin(9600);
 
     // The text to be printed in serial monitor
-    Serial.println(
-        "Distance measurement using Arduino Uno.");
+    Serial.println("Meranie vzdialenosti cez Arduino nano");
     delay(500);
 }
 
 void loop()
 {
     digitalWrite(trigPin, LOW);
-    delayMicroseconds(2); // wait for 2 ms to avoid
-                          // collision in serial monitor
-
+    delayMicroseconds(2);
     digitalWrite(
         trigPin,
         HIGH); // turn on the Trigger to generate pulse
@@ -39,23 +30,13 @@ void loop()
         10); // keep the trigger "ON" for 10 ms to generate
              // pulse for 10 ms.
 
-    digitalWrite(trigPin,
-                 LOW); // Turn off the pulse trigger to stop
-                       // pulse generation
-
-    // If pulse reached the receiver echoPin
-    // become high Then pulseIn() returns the
-    // time taken by the pulse to reach the
-    // receiver
+    digitalWrite(trigPin, LOW); 
 
     duration = pulseIn(echoPin, HIGH);
-    distance
-        = duration * 0.0344 / 2; // Expression to calculate
-                                 // distance using time
+    distance = duration * 0.0344 / 2; 
 
     Serial.print("Distance: ");
-    Serial.print(
-        distance); // Print the output in serial monitor
+    Serial.print(distance); 
     Serial.println(" cm");
     delay(100);
 }
