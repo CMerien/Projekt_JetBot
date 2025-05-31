@@ -22,7 +22,7 @@ def spracuj_subor(cesta):
             'pozadovana': msg.data[1],
             'skutocna': msg.data[2],
             'rychlost': msg.data[3],
-            'rychlost_odo': msg.data[4],  # Added odometry speed
+            'rychlost_odo': msg.data[4],  
             'kod': msg.data[5]
         })
     
